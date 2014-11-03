@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		635EEA871A07A6250072FDD6 /* vCardSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 635EEA861A07A6250072FDD6 /* vCardSerialization.m */; };
 		63B08CDD1A0783AB00692223 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 63B08CDC1A0783AB00692223 /* main.m */; };
 		63B08CE01A0783AB00692223 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 63B08CDF1A0783AB00692223 /* AppDelegate.m */; };
 		63B08CE31A0783AB00692223 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63B08CE21A0783AB00692223 /* ViewController.m */; };
@@ -14,6 +15,7 @@
 		63B08CE81A0783AB00692223 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63B08CE71A0783AB00692223 /* Images.xcassets */; };
 		63B08CEB1A0783AB00692223 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63B08CE91A0783AB00692223 /* LaunchScreen.xib */; };
 		63B08CF71A0783AB00692223 /* AddressBookTestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 63B08CF61A0783AB00692223 /* AddressBookTestTests.m */; };
+		63BDBACE1A078405002AA967 /* AddressBook.m in Sources */ = {isa = PBXBuildFile; fileRef = 63BDBACD1A078405002AA967 /* AddressBook.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,6 +29,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		635EEA851A07A6250072FDD6 /* vCardSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vCardSerialization.h; sourceTree = "<group>"; };
+		635EEA861A07A6250072FDD6 /* vCardSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = vCardSerialization.m; sourceTree = "<group>"; };
 		63B08CD71A0783AB00692223 /* AddressBookTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AddressBookTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63B08CDB1A0783AB00692223 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		63B08CDC1A0783AB00692223 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -40,6 +44,8 @@
 		63B08CF01A0783AB00692223 /* AddressBookTestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AddressBookTestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		63B08CF51A0783AB00692223 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		63B08CF61A0783AB00692223 /* AddressBookTestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddressBookTestTests.m; sourceTree = "<group>"; };
+		63BDBACC1A078405002AA967 /* AddressBook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressBook.h; sourceTree = "<group>"; };
+		63BDBACD1A078405002AA967 /* AddressBook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressBook.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +66,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		635EEA841A07A6250072FDD6 /* vCardSerialization */ = {
+			isa = PBXGroup;
+			children = (
+				635EEA851A07A6250072FDD6 /* vCardSerialization.h */,
+				635EEA861A07A6250072FDD6 /* vCardSerialization.m */,
+			);
+			path = vCardSerialization;
+			sourceTree = "<group>";
+		};
 		63B08CCE1A0783AB00692223 = {
 			isa = PBXGroup;
 			children = (
@@ -89,6 +104,9 @@
 				63B08CE71A0783AB00692223 /* Images.xcassets */,
 				63B08CE91A0783AB00692223 /* LaunchScreen.xib */,
 				63B08CDA1A0783AB00692223 /* Supporting Files */,
+				63BDBACC1A078405002AA967 /* AddressBook.h */,
+				63BDBACD1A078405002AA967 /* AddressBook.m */,
+				635EEA841A07A6250072FDD6 /* vCardSerialization */,
 			);
 			path = AddressBookTest;
 			sourceTree = "<group>";
@@ -220,7 +238,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				63B08CE31A0783AB00692223 /* ViewController.m in Sources */,
+				63BDBACE1A078405002AA967 /* AddressBook.m in Sources */,
 				63B08CE01A0783AB00692223 /* AppDelegate.m in Sources */,
+				635EEA871A07A6250072FDD6 /* vCardSerialization.m in Sources */,
 				63B08CDD1A0783AB00692223 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -412,6 +432,7 @@
 				63B08CFC1A0783AB00692223 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		63B08CFD1A0783AB00692223 /* Build configuration list for PBXNativeTarget "AddressBookTestTests" */ = {
 			isa = XCConfigurationList;
@@ -420,6 +441,7 @@
 				63B08CFF1A0783AB00692223 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
