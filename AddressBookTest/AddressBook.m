@@ -75,10 +75,12 @@ allGroups
 
 	NSMutableArray *groupNames = [NSMutableArray array];
 	for (NSInteger i = 0; i < allGroups.count; ++i) {
-		ABRecordRef record = (__bridge ABRecordRef)allGroups[i];
+		@autoreleasepool {
+			ABRecordRef record = (__bridge ABRecordRef)allGroups[i];
 
-		NSString *name = (__bridge_transfer NSString *)ABRecordCopyValue(record, kABGroupNameProperty);
-		[groupNames addObject:name];
+			NSString *name = (__bridge_transfer NSString *)ABRecordCopyValue(record, kABGroupNameProperty);
+			[groupNames addObject:name];
+		}
 	}
 	
 	return groupNames;
@@ -123,11 +125,13 @@ groupWithName:(NSString *)groupName
 	NSArray *allGroups = (__bridge_transfer NSArray *) ABAddressBookCopyArrayOfAllGroups(self.addressBook);
 
 	for (NSInteger i = 0; i < allGroups.count; ++i) {
-		ABRecordRef record = (__bridge ABRecordRef)allGroups[i];
+		@autoreleasepool {
+			ABRecordRef record = (__bridge ABRecordRef)allGroups[i];
 
-		NSString *name = (__bridge_transfer NSString *)ABRecordCopyValue(record, kABGroupNameProperty);
-		if ([name isEqualToString:groupName]) {
-			return record;
+			NSString *name = (__bridge_transfer NSString *)ABRecordCopyValue(record, kABGroupNameProperty);
+			if ([name isEqualToString:groupName]) {
+				return record;
+			}
 		}
 	}
 
