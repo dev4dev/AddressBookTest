@@ -96,8 +96,7 @@ allContacts
 - (NSString *)
 vCardForAllContacts
 {
-	NSData *vCardData = [vCardSerialization vCardDataWithAddressBookRecords:[self allContacts] error:nil];
-	return [[NSString alloc] initWithData:vCardData encoding:NSUTF8StringEncoding];
+	return [self vCardFromContactsArray:[self allContacts]];
 }
 
 - (NSString *)
@@ -105,16 +104,14 @@ vCardForAllContactsInGroupWithName:(NSString *)groupName
 {
 	ABRecordRef groupRecord = [self groupWithName:groupName];
 	NSArray *contacts = (__bridge_transfer NSArray *) ABGroupCopyArrayOfAllMembers(groupRecord);
-	NSData *vCardData = [vCardSerialization vCardDataWithAddressBookRecords:contacts error:nil];
-	return [[NSString alloc] initWithData:vCardData encoding:NSUTF8StringEncoding];
+	return [self vCardFromContactsArray:contacts];
 }
 
 - (NSString *)
 vCardForContactRecord:(ABRecordRef)contactRecord
 {
 	NSArray *contacts = @[(__bridge id) contactRecord];
-	NSData *vCardData = [vCardSerialization vCardDataWithAddressBookRecords:contacts error:nil];
-	return [[NSString alloc] initWithData:vCardData encoding:NSUTF8StringEncoding];
+	return [self vCardFromContactsArray:contacts];
 }
 
 #pragma mark - Private methods
@@ -138,5 +135,11 @@ groupWithName:(NSString *)groupName
 	return NULL;
 }
 
+- (NSString *)
+vCardFromContactsArray:(NSArray *)contacts
+{
+	NSData *vCardData = [vCardSerialization vCardDataWithAddressBookRecords:contacts error:nil];
+	return [[NSString alloc] initWithData:vCardData encoding:NSUTF8StringEncoding];
+}
 
 @end
