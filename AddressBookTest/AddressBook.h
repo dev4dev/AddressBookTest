@@ -18,7 +18,7 @@
 
 - (NSArray *)allGroups;
 - (NSArray *)allContacts;
-- (NSArray *)contactsUpdatedAfter:(NSDate *)date;
+- (NSArray *)contactsModifiedAfter:(NSDate *)date;
 
 - (NSData *)vCardForAllContacts;
 - (NSData *)vCardForContactsInArray:(NSArray *)contacts;

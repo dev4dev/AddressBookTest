@@ -94,7 +94,7 @@ allContacts
 }
 
 - (NSArray *)
-contactsUpdatedAfter:(NSDate *)date
+contactsModifiedAfter:(NSDate *)date
 {
 	NSArray *allContacts = [self allContacts];
 	

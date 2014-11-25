@@ -100,7 +100,7 @@ updateAccessStatusLabel
 
 - (IBAction)getVCardForContactsUpdatedHourAgo:(id)sender
 {
-	NSArray *contacts = [self.addressBook contactsUpdatedAfter:[NSDate dateWithTimeIntervalSinceNow:-3600]];
+	NSArray *contacts = [self.addressBook contactsModifiedAfter:[NSDate dateWithTimeIntervalSinceNow:-3600]];
 	NSString *vCard = dataToString([self.addressBook vCardForContactsInArray:contacts]);
 	
 	NSLog(@"%@", vCard);
