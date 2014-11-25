@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "AddressBook.h"
+#import "Helpers.h"
 
 @import AddressBookUI;
 
@@ -27,6 +28,7 @@
 	// Do any additional setup after loading the view, typically from a nib.
 
 	self.addressBook = [AddressBook new];
+    
 	[self updateAccessStatusLabel];
 }
 
@@ -76,7 +78,7 @@ updateAccessStatusLabel
 
 	if (groups.count > 0) {
 		NSString *group = [groups firstObject];
-		NSString *vCard = [self.addressBook vCardForAllContactsInGroupWithName:group];
+		NSString *vCard = dataToString([self.addressBook vCardForAllContactsInGroupWithName:group]);
 
 		NSLog(@"%@", vCard);
 	}
@@ -84,7 +86,7 @@ updateAccessStatusLabel
 
 - (IBAction)getVCardForAllContacts:(id)sender
 {
-	NSString *vCard = [self.addressBook vCardForAllContacts];
+	NSString *vCard = dataToString([self.addressBook vCardForAllContacts]);
 
 	NSLog(@"%@", vCard);
 }
@@ -96,10 +98,18 @@ updateAccessStatusLabel
 	[self presentViewController:vc animated:YES completion:nil];
 }
 
+- (IBAction)getVCardForContactsUpdatedHourAgo:(id)sender
+{
+	NSArray *contacts = [self.addressBook contactsUpdatedAfter:[NSDate dateWithTimeIntervalSinceNow:-3600]];
+	NSString *vCard = dataToString([self.addressBook vCardForContactsInArray:contacts]);
+	
+	NSLog(@"%@", vCard);
+}
+
 - (void)
 peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker didSelectPerson:(ABRecordRef)person
 {
-	NSString *vCard = [self.addressBook vCardForContactRecord:person];
+	NSString *vCard = dataToString([self.addressBook vCardForContactRecord:person]);
 
 	NSLog(@"%@", vCard);
 }

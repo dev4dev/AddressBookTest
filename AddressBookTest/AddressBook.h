@@ -17,9 +17,12 @@
 - (void)requestAccess:(ABAddressBookRequestAccessCompletionHandler)complete;
 
 - (NSArray *)allGroups;
+- (NSArray *)allContacts;
+- (NSArray *)contactsUpdatedAfter:(NSDate *)date;
 
-- (NSString *)vCardForAllContacts;
-- (NSString *)vCardForAllContactsInGroupWithName:(NSString *)groupName;
-- (NSString *)vCardForContactRecord:(ABRecordRef)contactRecord;
+- (NSData *)vCardForAllContacts;
+- (NSData *)vCardForContactsInArray:(NSArray *)contacts;
+- (NSData *)vCardForAllContactsInGroupWithName:(NSString *)groupName;
+- (NSData *)vCardForContactRecord:(ABRecordRef)contactRecord;
 
 @end

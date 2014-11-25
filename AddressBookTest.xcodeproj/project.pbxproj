@@ -16,6 +16,7 @@
 		63B08CEB1A0783AB00692223 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63B08CE91A0783AB00692223 /* LaunchScreen.xib */; };
 		63B08CF71A0783AB00692223 /* AddressBookTestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 63B08CF61A0783AB00692223 /* AddressBookTestTests.m */; };
 		63BDBACE1A078405002AA967 /* AddressBook.m in Sources */ = {isa = PBXBuildFile; fileRef = 63BDBACD1A078405002AA967 /* AddressBook.m */; };
+		63D3A3641A249F810082D89C /* Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D3A3631A249F810082D89C /* Helpers.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,8 @@
 		63B08CF61A0783AB00692223 /* AddressBookTestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddressBookTestTests.m; sourceTree = "<group>"; };
 		63BDBACC1A078405002AA967 /* AddressBook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressBook.h; sourceTree = "<group>"; };
 		63BDBACD1A078405002AA967 /* AddressBook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressBook.m; sourceTree = "<group>"; };
+		63D3A3621A249F810082D89C /* Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Helpers.h; sourceTree = "<group>"; };
+		63D3A3631A249F810082D89C /* Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Helpers.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +110,8 @@
 				63BDBACC1A078405002AA967 /* AddressBook.h */,
 				63BDBACD1A078405002AA967 /* AddressBook.m */,
 				635EEA841A07A6250072FDD6 /* vCardSerialization */,
+				63D3A3621A249F810082D89C /* Helpers.h */,
+				63D3A3631A249F810082D89C /* Helpers.m */,
 			);
 			path = AddressBookTest;
 			sourceTree = "<group>";
@@ -240,6 +245,7 @@
 				63B08CE31A0783AB00692223 /* ViewController.m in Sources */,
 				63BDBACE1A078405002AA967 /* AddressBook.m in Sources */,
 				63B08CE01A0783AB00692223 /* AppDelegate.m in Sources */,
+				63D3A3641A249F810082D89C /* Helpers.m in Sources */,
 				635EEA871A07A6250072FDD6 /* vCardSerialization.m in Sources */,
 				63B08CDD1A0783AB00692223 /* main.m in Sources */,
 			);

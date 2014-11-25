@@ -28,7 +28,7 @@ init
 	if (self = [super init]) {
 		_addressBook = ABAddressBookCreateWithOptions(NULL, nil);
 	}
-
+	
 	return self;
 }
 
@@ -72,12 +72,12 @@ requestAccess:(ABAddressBookRequestAccessCompletionHandler)complete
 allGroups
 {
 	NSArray *allGroups = (__bridge_transfer NSArray *) ABAddressBookCopyArrayOfAllGroups(self.addressBook);
-
+	
 	NSMutableArray *groupNames = [NSMutableArray array];
 	for (NSInteger i = 0; i < allGroups.count; ++i) {
 		@autoreleasepool {
 			ABRecordRef record = (__bridge ABRecordRef)allGroups[i];
-
+			
 			NSString *name = (__bridge_transfer NSString *)ABRecordCopyValue(record, kABGroupNameProperty);
 			[groupNames addObject:name];
 		}
@@ -93,25 +93,51 @@ allContacts
 	return allContacts;
 }
 
-- (NSString *)
-vCardForAllContacts
+- (NSArray *)
+contactsUpdatedAfter:(NSDate *)date
 {
-	return [self vCardFromContactsArray:[self allContacts]];
+	NSArray *allContacts = [self allContacts];
+	
+	NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(id record, NSDictionary *bindings) {
+		@autoreleasepool {
+			NSDate *updated = (__bridge_transfer NSDate *) ABRecordCopyValue((__bridge ABRecordRef)record, kABPersonModificationDateProperty);
+			
+			if ([updated timeIntervalSinceDate:date] > 0) {
+				return YES;
+			}
+		}
+		
+		return NO;
+	}];
+	
+	return [allContacts filteredArrayUsingPredicate:predicate];
 }
 
-- (NSString *)
+- (NSData *)
+vCardForAllContacts
+{
+	return [self vCardForContactsInArray:[self allContacts]];
+}
+
+- (NSData *)
+vCardForContactsInArray:(NSArray *)contacts
+{
+	return [vCardSerialization vCardDataWithAddressBookRecords:contacts error:nil];
+}
+
+- (NSData *)
 vCardForAllContactsInGroupWithName:(NSString *)groupName
 {
 	ABRecordRef groupRecord = [self groupWithName:groupName];
 	NSArray *contacts = (__bridge_transfer NSArray *) ABGroupCopyArrayOfAllMembers(groupRecord);
-	return [self vCardFromContactsArray:contacts];
+	return [self vCardForContactsInArray:contacts];
 }
 
-- (NSString *)
+- (NSData *)
 vCardForContactRecord:(ABRecordRef)contactRecord
 {
 	NSArray *contacts = @[(__bridge id) contactRecord];
-	return [self vCardFromContactsArray:contacts];
+	return [self vCardForContactsInArray:contacts];
 }
 
 #pragma mark - Private methods
@@ -120,26 +146,19 @@ vCardForContactRecord:(ABRecordRef)contactRecord
 groupWithName:(NSString *)groupName
 {
 	NSArray *allGroups = (__bridge_transfer NSArray *) ABAddressBookCopyArrayOfAllGroups(self.addressBook);
-
+	
 	for (NSInteger i = 0; i < allGroups.count; ++i) {
 		@autoreleasepool {
 			ABRecordRef record = (__bridge ABRecordRef)allGroups[i];
-
+			
 			NSString *name = (__bridge_transfer NSString *)ABRecordCopyValue(record, kABGroupNameProperty);
 			if ([name isEqualToString:groupName]) {
 				return record;
 			}
 		}
 	}
-
+	
 	return NULL;
-}
-
-- (NSString *)
-vCardFromContactsArray:(NSArray *)contacts
-{
-	NSData *vCardData = [vCardSerialization vCardDataWithAddressBookRecords:contacts error:nil];
-	return [[NSString alloc] initWithData:vCardData encoding:NSUTF8StringEncoding];
 }
 
 @end
